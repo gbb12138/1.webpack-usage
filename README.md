@@ -22,3 +22,8 @@ webpack基本配置
         - cross-env NODE_ENV=xxx 相当于设置了node环境变量，改变了process.env.NODE_ENV
     -  DefinePlugin用来设置模块内的全局变量,相当于进行模块内的字符串替换
     - mode的优先级：默认是production < 配置文件（webpack.config.js中的mode）< package中的命令传参
+## webpack-dev-server开发服务器的原理
+- 也是会用webpack从入口文件进行打包，然后输出到输出目录，这个输出是输出到了内存文件系统里去了
+- 然后会启用一个http服务器预览项目
+
+

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prod": "webpack --mode=production",
-    "dev": "cross-env NODE_ENV=development webpack --env=development"
+    "dev": "cross-env NODE_ENV=development webpack --env=development",
+    "start": "webpack serve"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,11 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
-    "style-loader": "^3.3.1"
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "node-sass": "^7.0.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack-dev-server": "^4.6.0"
   }
 }

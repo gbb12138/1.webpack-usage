@@ -34,6 +34,10 @@ module.exports = function (env) {
     return {
         mode: env.production ? 'production' : 'development',  // none  development production
         devtool: 'source-map',
+        devServer: {
+            port: 8080,
+            open: true, // 打包后会自动打开浏览器
+        },
         // 指定项目打包的入口
         entry: './src/index.js',
         output: { // 指定文件输出的目录，默认是dist，输出目录必须是一个绝对路径
@@ -45,6 +49,14 @@ module.exports = function (env) {
                 {
                     test: /\.css$/,
                     use:['style-loader', 'css-loader']
+                },
+                {
+                    test: /\.less$/,
+                    use:['style-loader', 'css-loader','less-loader']
+                },
+                {
+                    test: /\.scss$/,
+                    use:['style-loader', 'css-loader','sass-loader']
                 }
             ]
         },
