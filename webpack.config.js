@@ -48,7 +48,16 @@ module.exports = function (env) {
             rules: [
                 {
                     test: /\.css$/,
-                    use:['style-loader', 'css-loader']
+                    use:['style-loader', { // loader传入参数
+                        loader: "css-loader",
+                        options: {
+                            url:true, // 启用/禁用url解析 url(xxx)
+                            import:true, // 是否允许 @import xxx 语法处理
+                            modules: false, // 是否允许css模块化 import styles from './index.css',选择器变成hash映射
+                            sourceMap:false, // 是否生成sourcemap源码映射
+                            esModule:true  // 是否生成es module的模块对象
+                        }
+                    }]
                 },
                 {
                     test: /\.less$/,
