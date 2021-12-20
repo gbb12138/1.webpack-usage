@@ -1,4 +1,5 @@
 @import "base.css";
 #css{
     background-color: green;
+    transition: all linear .2s;
 }

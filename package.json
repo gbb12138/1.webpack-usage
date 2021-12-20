@@ -22,8 +22,20 @@
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "node-sass": "^7.0.0",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.0.2",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
     "webpack-dev-server": "^4.6.0"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%"
+    ]
   }
 }

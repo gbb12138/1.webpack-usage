@@ -62,15 +62,15 @@ module.exports = function (env) {
                             sourceMap:false, // 是否生成sourcemap源码映射
                             esModule:true  // 是否生成es module的模块对象
                         }
-                    }]
+                    }, 'postcss-loader']
                 },
                 {
                     test: /\.less$/,
-                    use:['style-loader', 'css-loader','less-loader']
+                    use:['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
                 },
                 {
                     test: /\.scss$/,
-                    use:['style-loader', 'css-loader','sass-loader']
+                    use:['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
                 }
             ]
         },
