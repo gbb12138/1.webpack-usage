@@ -38,6 +38,11 @@ module.exports = function (env) {
             port: 8080,
             open: true, // 打包后会自动打开浏览器
         },
+        resolve:{
+            alias:{  // @ -> 当前目录下的src
+                '@':path.resolve('src')
+            }
+        },
         // 指定项目打包的入口
         entry: './src/index.js',
         output: { // 指定文件输出的目录，默认是dist，输出目录必须是一个绝对路径
