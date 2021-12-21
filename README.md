@@ -34,5 +34,6 @@ webpack基本配置
     - 直接通过import引入
     - 通过webpack.ProvidePlugin引入，模块内能使用，模块外不能使用
     - expose-loader 任何地方都能访问，把改变量变成环境变量`window.isarray`,把模块添加到了全局变量上window
+    - externals 挂载到window上
 
 
