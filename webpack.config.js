@@ -43,6 +43,9 @@ module.exports = function (env) {
                 '@':path.resolve('src')
             }
         },
+        externals: { // 配置成全局变量，访问_就相当于访问了lodash
+            lodash: '_'
+        },
         // 指定项目打包的入口
         entry: './src/index.js',
         output: { // 指定文件输出的目录，默认是dist，输出目录必须是一个绝对路径
@@ -60,6 +63,7 @@ module.exports = function (env) {
                             import:true, // 是否允许 @import xxx 语法处理
                             modules: false, // 是否允许css模块化 import styles from './index.css',选择器变成hash映射
                             sourceMap:false, // 是否生成sourcemap源码映射
+                            importLoader:0, // 允许当前配置的loader中有 x 个能应用在import的文件上（从css-loader也就是当前配置的loader，开始向下找x个）
                             esModule:true  // 是否生成es module的模块对象
                         }
                     }, 'postcss-loader']
@@ -71,6 +75,27 @@ module.exports = function (env) {
                 {
                     test: /\.scss$/,
                     use:['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                },
+                {
+                    test: /\.(jpg|png|gif|jpeg)/,
+                    type: 'asset/resource',  // 打包到输出目录中
+                    generator: {
+                        filename: '[hash][ext]'
+                    }
+                },
+                {
+                    test: /isarray/,
+                    use: [
+                        {
+                            loader: "expose-loader",
+                            options: {
+                                exposes: {
+                                    globalName: 'isArray',
+                                    override: true, // 变量覆盖
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -81,6 +106,9 @@ module.exports = function (env) {
             new webpack.DefinePlugin({
                 // JSON.stringify =》 '"' + process.env.NODE_ENV + '"'， 不加""相当于取的是变量，应该是字符串
                 'xxx': JSON.stringify(process.env.NODE_ENV), // 设置在模块内xxx = process.env.NODE_ENV
+            }),
+            new webpack.ProvidePlugin({  // 使用时不需要通过import引入
+                isArray: 'isarray'
             })
         ]
     }

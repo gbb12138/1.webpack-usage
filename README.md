@@ -25,5 +25,14 @@ webpack基本配置
 ## webpack-dev-server开发服务器的原理
 - 也是会用webpack从入口文件进行打包，然后输出到输出目录，这个输出是输出到了内存文件系统里去了
 - 然后会启用一个http服务器预览项目
+## 图片
+- webpack4关于图片使用file-loader, url-loader
+- file-loader =》 asset/resource 把图片拷贝到输出目录中，返回一个输出的路径
+- url-loader =》 asset/inline 不拷贝文件，直接把源文件变成base64字符串嵌入到输出结果中
+## 引入第三方库
+- 引入方式
+    - 直接通过import引入
+    - 通过webpack.ProvidePlugin引入，模块内能使用，模块外不能使用
+    - expose-loader 任何地方都能访问，把改变量变成环境变量`window.isarray`,把模块添加到了全局变量上window
 
 
